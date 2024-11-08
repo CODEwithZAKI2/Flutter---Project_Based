@@ -3,6 +3,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:project_based/pages/home.dart';
 import 'package:project_based/styles/app_colors.dart';
 
 class LoginPage extends StatelessWidget {
@@ -25,7 +26,6 @@ class LoginPage extends StatelessWidget {
                     color: Colors.white,
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
-          
                   ),
                 ),
                 SizedBox(
@@ -78,7 +78,9 @@ class LoginPage extends StatelessWidget {
                     child: Text("Forgot Password"),
                   ),
                 ),
-                SizedBox(height: 32,),
+                SizedBox(
+                  height: 32,
+                ),
                 SizedBox(
                   width: double.infinity,
                   height: 48,
@@ -87,7 +89,14 @@ class LoginPage extends StatelessWidget {
                       primary: AppColors.primary,
                       onPrimary: Colors.black,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      // Navigator.of(context).push(
+                      //   MaterialPageRoute(builder: (context) {
+                      //     return HomePage();
+                      //   }),
+                      // );
+                      Navigator.of(context).pushReplacementNamed('/main');
+                    },
                     child: Text("Login"),
                   ),
                 ),
@@ -101,7 +110,6 @@ class LoginPage extends StatelessWidget {
                 SizedBox(
                   height: 16,
                 ),
-                
                 SizedBox(
                   height: 48,
                   child: ElevatedButton(
@@ -109,10 +117,10 @@ class LoginPage extends StatelessWidget {
                       primary: Colors.white,
                       onPrimary: Colors.black,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(50),
-                          ),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(50),
                         ),
+                      ),
                     ),
                     onPressed: () {},
                     child: Row(
@@ -131,7 +139,9 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 8,),
+                SizedBox(
+                  height: 8,
+                ),
                 SizedBox(
                   height: 48,
                   child: ElevatedButton(
@@ -162,15 +172,19 @@ class LoginPage extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Text("Don't have an account? ",style: TextStyle(
-                      color: Colors.white,
-                    ),),
-                    TextButton(
-                      style: TextButton.styleFrom(
-                        primary: Colors.amber
+                    Text(
+                      "Don't have an account? ",
+                      style: TextStyle(
+                        color: Colors.white,
                       ),
+                    ),
+                    TextButton(
+                      style: TextButton.styleFrom(primary: Colors.amber),
                       onPressed: () {},
-                      child: Text("Sign up", style: TextStyle(decoration: TextDecoration.underline),),
+                      child: Text(
+                        "Sign up",
+                        style: TextStyle(decoration: TextDecoration.underline),
+                      ),
                     )
                   ],
                 ),
