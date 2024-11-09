@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        brightness: Brightness.dark,
         fontFamily: 'Urbanist',
         scaffoldBackgroundColor: AppColors.bG
       ),

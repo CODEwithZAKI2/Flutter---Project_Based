@@ -1,46 +1,39 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:project_based/components/post_items.dart';
 import 'package:project_based/styles/app_colors.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
 
+class HomePage extends StatelessWidget {
+  HomePage({Key? key}) : super(key: key);
+  List<String> users = [];
   @override
   Widget build(BuildContext context) {
+    mockUsersFromServer();
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.bG,
-        title: Text("10hr Flutter"),
-        actions: [
-          Icon(Icons.location_on_outlined),
-        ],
-      ),
-      body: ListView(
-        children: mockUsersFromServer(),
-      ),
-    );
+        appBar: AppBar(
+          backgroundColor: AppColors.bG,
+          title: Text("10hr Flutter"),
+          actions: [
+            Icon(Icons.location_on_outlined),
+          ],
+        ),
+        body: ListView.separated(
+          itemCount: users.length,
+          separatorBuilder: (context, index) {
+            return SizedBox(
+              height: 20,
+            );
+          },
+          itemBuilder: (context, index) {
+          return PostItems(user: users[index]);
+        }));
   }
 
-  Widget _userItem() {
-    return Row(
-      children: [
-        Image.asset(
-          'assets/temp/user1.png',
-          width: 40,
-          height: 40,
-        ),
-        SizedBox(
-          width: 16,
-        ),
-        Text("Sarah Fernandez")
-      ],
-    );
-  }
-  List<Widget> mockUsersFromServer() {
-    List<Widget> users = [];
-    for (var i = 0; i < 1000; i++) {
-      users.add(_userItem());
+  mockUsersFromServer() {
+    for (var i = 0; i < 100; i++) {
+      users.add('User name $i');
     }
     return users;
   }
